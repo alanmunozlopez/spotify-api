@@ -10,6 +10,7 @@ const port = process.env.PORT || 3300
 const app = express()
 const server = http.createServer(app)
 
+//require middleware
 app.use('/api', api)
 
 server.listen(port, () => {

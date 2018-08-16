@@ -5,6 +5,7 @@ const express = require('express')
 
 const api = express.Router()
 
+// test endpoint
 api.get('/hello', (req, res) => {
   debug('This is a hello world')
   res.send({ "msg": "all clear"})
