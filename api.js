@@ -8,8 +8,8 @@ const request = require('request')
 const btoa = require('btoa')
 
 // Credentials
-const client_id = 'f8165b0ee1c9449294b08d8791042f15'
-const client_secret = '5140451655a34c20ace821d2d80b7d93'
+const client_id = '5de5cc1dea9a49248447e9c1fc8c883e'
+const client_secret = 'f96497e6b670460a8b68279f9d9a1375'
 
 const api = express.Router()
 
@@ -47,7 +47,7 @@ api.get('/search/:thing', (req, res) => {
       // save the token and use
       var token = body.access_token
       var options = {
-        url: `https://api.spotify.com/v1/search?q=${thing}&type=track%2Cartist&market=US&limit=10`,
+        url: `https://api.spotify.com/v1/search?q=${thing}&type=album&market=US&limit=10`,
         headers: {
           'Authorization': 'Bearer ' + token
         },
