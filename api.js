@@ -11,6 +11,16 @@ const btoa = require('btoa')
 const client_id = '5de5cc1dea9a49248447e9c1fc8c883e'
 const client_secret = 'f96497e6b670460a8b68279f9d9a1375'
 
+var admin = require("firebase-admin");
+
+var serviceAccount = require("./serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://project-albums.firebaseio.com"
+});
+
+
 const api = express.Router()
 
 api.use(function(req, res, next) {
@@ -55,6 +65,11 @@ api.get('/search/:thing', (req, res) => {
       }
       request.get(options, function(error, response, body) {
         // print good-msg and send the result
+        let ref = admin.database().ref().child('requests');
+        ref.push().set({
+          query: thing,
+          result: body
+        });
         console.log(`${chalk.green('all good! 😃 ')}`)
         res.send(body)
       })
