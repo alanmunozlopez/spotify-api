@@ -64,12 +64,13 @@ api.get('/search/:thing', (req, res) => {
         json: true
       }
       request.get(options, function(error, response, body) {
-        // print good-msg and send the result
+        // save the result on firebase
         let ref = admin.database().ref().child('requests');
         ref.push().set({
           query: thing,
           result: body
         });
+        // print good-msg and send the result
         console.log(`${chalk.green('all good! 😃 ')}`)
         res.send(body)
       })
