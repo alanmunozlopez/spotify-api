@@ -4,7 +4,7 @@ const http = require('http')
 const chalk = require('chalk')
 const express = require('express')
 
-const api = require('./api')
+const api = require('./routes/api')
 
 const port = process.env.PORT || 3300
 const app = express()
