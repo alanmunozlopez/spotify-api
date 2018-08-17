@@ -47,7 +47,7 @@ api.get('/search/:thing', (req, res) => {
       // save the token and use
       var token = body.access_token
       var options = {
-        url: `https://api.spotify.com/v1/search?q=${thing}&type=album&market=US&limit=10`,
+        url: `https://api.spotify.com/v1/search?q=${thing}&type=album&market=US&limit=20`,
         headers: {
           'Authorization': 'Bearer ' + token
         },
